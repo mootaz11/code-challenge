@@ -7,7 +7,10 @@ Node js v12.18.2 </br>
 npm 6.14.5
 
 
-#Installation :
+#Installation : 
+
+
+
 npm install typescript                                   </br>
 git clone https://github.com/mootaz11/code-challenge.git </br>
 checkout the folder of the repository cloned to the pc   </br>
