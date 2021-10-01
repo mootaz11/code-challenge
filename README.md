@@ -8,10 +8,11 @@ npm 6.14.5
 
 
 #Installation :
-
-git clone https://github.com/mootaz11/code-challenge.git
-npm install
-npm start 
+npm install typescript                                   </br>
+git clone https://github.com/mootaz11/code-challenge.git </br>
+checkout the folder of the repository cloned to the pc   </br>
+npm install                                              </br>
+npm start                                                </br>
 
 # Contact 
    linkedin : https://www.linkedin.com/in/mootaz-amara-b4aab6162/ </br>
