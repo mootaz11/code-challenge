@@ -33,18 +33,25 @@ const showOutput=(result: number [],wordLen:number):void =>{
     */ 
 
 
-    let wordPosition = wordLen-1; 
-    let output ='';
-    for(let i =0;i<result.length;i++){
-        output+=result[i]+" ";
-        if(i===wordPosition){
-            output+=" \n";
-            wordPosition+=wordLen;
+
+
+    let wordPosition = wordLen-1;                   // instantiate wordPosition by assigning the first 'm' pixels 
+    let output ='';                                 // affecting '' to the output
+    for(let i =0;i<result.length;i++){              // loop over the array of distances 
+        output+=result[i]+" ";                      // concatenating every distance to the output
+        if(i===wordPosition){                       // if we achieved the length of each word we assign \n 
+            output+=" \n";                      
+            wordPosition+=wordLen;                  // increment wordPosition
         }
     }
-    console.log('\n')
-    console.log(output)
+    console.log('\n')                                   
+    console.log(output)                             // console the output to the user
+
+
+
 }
+
+
 
 
 
@@ -59,20 +66,26 @@ const calculateDistance = (testCase: Object): number[] => {
         * return : an array of distances 
     */ 
 
-    let distanceArray: number[] = [];
-    testCase['bitmap'].map(word => {
-        for (let i = 0; i < word.length; i++) {
-            let positionsOfWhitePixels:number[]=[];
-            for (let j = 0; j < word.length; j++) {
+    let distanceArray: number[] = [];                                   // instantiate an array of number called distanceArray
+    testCase['bitmap'].map(word => {                                    // map the bitmap attribute which contains the set of words
+        for (let i = 0; i < word.length; i++) {                         // loop each word
+            let DistanceOfWhitePixels:number[]=[];                      // instantiate an array which will contain the distance between the white pixels an the pixel in word[i]
+            for (let j = 0; j < word.length; j++) {         
                 if(word[j]==='1'){
-                    positionsOfWhitePixels.push(Math.abs(i-j));
+                    DistanceOfWhitePixels.push(Math.abs(i-j));  
                 }
             }
-            distanceArray.push(Math.min(...positionsOfWhitePixels))
+            distanceArray.push(Math.min(...DistanceOfWhitePixels))      // push the minimal distance to  the distance array
         }
     })
     return distanceArray;
+
+
+
 }
+
+
+
 
 const main = (): void => {
   /*
@@ -84,22 +97,22 @@ const main = (): void => {
 
 
 
-    while (testCasesNumber < 1 || testCasesNumber > 1000) {
+    while (testCasesNumber < 1 || testCasesNumber > 1000) {                                        // prompt the number of tests , in this case the program will accept only the number that varies between 1 and 1000
         testCasesNumber = parseInt(prompt('guess a number of test cases :  ').toString());
     }
     let i = 0;
-    while (i < testCasesNumber) {
+    while (i < testCasesNumber) {                                                                  // we are going now to prompt the other input data 'testCasesNumber' times
 
         let n = 0
         let m = 0
 
-        while ((n < 1 || n > 182) && (m < 1 || m > 182)) {
-            let pair = prompt(`guess a pair of test case  ${i} `).split(' ').slice(0, 2);
-            n = parseInt(pair[0].replace(/\s+$/g, '').toString());
+        while ((n < 1 || n > 182) && (m < 1 || m > 182)) {                                          // prompt n and m which will only varies between 1 and 182 
+            let pair = prompt(`guess a pair of test case  ${i} `).split(' ').slice(0, 2);           // divides the input in a list of substrings and slice the first 2 numbers in the case of prompting more than 2 numbers 
+            n = parseInt(pair[0].replace(/\s+$/g, '').toString());                                  // replace space and general to '' to avoid user input problems
             m = parseInt(pair[1].replace(/\s+$/g, '').toString());
         }
 
-        let arrayOfWords: string[] = [];
+        let arrayOfWords: string[] = [];                                                            //instantiate arrayOfWords which will contain the words 
 
         for (let i = 0; i < n; i++) {
             let word: string = '';
@@ -108,18 +121,21 @@ const main = (): void => {
             }
             arrayOfWords.push(word);
         }
-        testCases.push({ n: n, m: m, bitmap: arrayOfWords })
+        testCases.push({ n: n, m: m, bitmap: arrayOfWords })                                        // to organize our work we have pushed each testcase to testCases array 
         i++;
     }
 
-    testCases.map(testCase => {
-        const result = calculateDistance(testCase);
+    testCases.map(testCase => {                                                                     // now we are going to handle each test case and console the output
+        const result = calculateDistance(testCase);             
         showOutput(result,testCase.m);
     })
 
 
 
-    process.exit()
+    process.exit()                                                                                 // finally exit the program
 }
 
-main()
+
+
+
+main()                                                                                             // call our main function
