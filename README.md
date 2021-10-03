@@ -15,6 +15,7 @@ npm install typescript                                   </br>
 git clone https://github.com/mootaz11/code-challenge.git </br>
 checkout the folder of the repository cloned to the pc   </br>
 npm install                                              </br>
+tsc app.ts                                               </br>
 npm start                                                </br>
 
 # Contact 
